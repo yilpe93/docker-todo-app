@@ -9,17 +9,17 @@ const app = express();
 // json 형태로 오는 요청의 본물을 해석해줄 수 있게 body-parser등록
 app.use(bodyParser.json());
 
-// DB 테이블 생성
-db.pool.query(
-  `CREATE TABLE lists (
-  id INTEGER AUTO_INCREMENT,
-  value TEXT,
-  PROMARY KEY (id)
-)`,
-  (err, res, fail) => {
-    console.log("res", res);
-  }
-);
+// // DB 테이블 생성
+// db.pool.query(
+//   `CREATE TABLE lists (
+//   id INTEGER AUTO_INCREMENT,
+//   value TEXT,
+//   PROMARY KEY (id)
+// )`,
+//   (err, res, fail) => {
+//     console.log("res", res);
+//   }
+// );
 
 app.get("/api/lists", (req, res) => {
   db.pool.query("SELECT * FROM lists;", (err, res, fail) => {
